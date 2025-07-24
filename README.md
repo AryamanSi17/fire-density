@@ -102,6 +102,6 @@ The live video window will show:
 
 ## Contact
 
-For questions, feature suggestions, or collaboration requests, please open an issue on the project repository or contact the maintainer via GitHub.
+For questions, feature suggestions, or collaboration requests, please open an issue on the project repository or contact via GitHub.
 
 ---
