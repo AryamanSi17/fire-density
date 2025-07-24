@@ -13,7 +13,6 @@ This project offers a modular solution for **real-time fire, smoke, and people d
 
 - [Overview](#overview)
 - [Features](#features)
-- [Project Structure](#project-structure)
 - [Setup & Installation](#setup--installation)
 - [Usage Instructions](#usage-instructions)
 - [Model Files](#model-files)
