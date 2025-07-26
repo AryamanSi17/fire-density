@@ -3,7 +3,7 @@ import cv2
 
 global_tracker_ids = set()
 
-def detect_fire_smoke(frame, model, conf=0.1):
+def detect_fire_smoke(frame, model, conf=0.5):
     # Restrict to only classes in your custom model
     results = model(frame, conf=conf, classes=[0, 1], verbose=False)
     fire_boxes = []
@@ -11,10 +11,10 @@ def detect_fire_smoke(frame, model, conf=0.1):
     for result in results:
         if hasattr(result, 'boxes') and result.boxes is not None:
             for box, cls_id, conf_score in zip(result.boxes.xyxy, result.boxes.cls, result.boxes.conf):
+                if conf_score < conf:
+                    continue  # Skip detections below new threshold
                 idx = int(cls_id)
-                # Defensive: safely get label
                 label = model.names[idx].lower() if 0 <= idx < len(model.names) else f"class_{idx}"
-                print(f"Detected label: {label} @ {conf_score:.2f}")
                 color = (0, 0, 255) if "fire" in label else (128, 128, 128)
                 x1, y1, x2, y2 = map(int, box)
                 fire_boxes.append((x1, y1, x2, y2, label, color))
